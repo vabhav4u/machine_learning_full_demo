@@ -39,3 +39,16 @@ python src/inference.py \
 --usage_score 0.5 \
 --contract_type yearly
 
+==========
+What This Project Demonstrates
+
+✔ Data ingestion
+✔ Data validation
+✔ Feature engineering
+✔ Feature store
+✔ Model training
+✔ Model artifact saving
+✔ Metrics tracking
+✔ CLI inference
+✔ Git-ready structure
+
