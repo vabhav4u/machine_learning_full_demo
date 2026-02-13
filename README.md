@@ -30,7 +30,7 @@ Install dependencies:
 
 ```bash
 pip install -r requirements.txt
-``` :contentReference[oaicite:4]{index=4}
+```
 
 ---
 
@@ -40,31 +40,31 @@ pip install -r requirements.txt
 
 ```bash
 python src/data_ingestion.py
-``` :contentReference[oaicite:5]{index=5}
+``` 
 
 ### 2️⃣ Clean the data
 
 ```bash
 python src/data_cleaning.py
-``` :contentReference[oaicite:6]{index=6}
+``` 
 
 ### 3️⃣ Create feature store
 
 ```bash
 python src/feature_engineering.py
-``` :contentReference[oaicite:7]{index=7}
+```
 
 ### 4️⃣ Train the ML model
 
 ```bash
 python src/train.py
-``` :contentReference[oaicite:8]{index=8}
+```
 
 ### 5️⃣ Evaluate model
 
 ```bash
 python src/evaluate.py
-``` :contentReference[oaicite:9]{index=9}
+```
 
 ### 6️⃣ Run Inference
 
@@ -76,7 +76,7 @@ python src/inference.py \
   --support_calls 2 \
   --usage_score 0.5 \
   --contract_type yearly
-``` :contentReference[oaicite:10]{index=10}
+``` 
 
 ---
 
@@ -96,7 +96,7 @@ python src/inference.py \
 
 - The `src/` folder contains all executable scripts.  
 - No Jupyter notebooks — this is pure Python scripts for easy automation and CI/CD.  
-- The dataset is small, so it runs fast and is suitable for learning or demo purposes. :contentReference[oaicite:12]{index=12}
+- The dataset is small, so it runs fast and is suitable for learning or demo purposes. 
 
 ---
 
@@ -108,7 +108,7 @@ You can extend this project with:
 - GitHub Actions CI/CD  
 - Logging & debug modes  
 - MLflow or DVC tracking  
-- Deployment (FastAPI / Flask) :contentReference[oaicite:13]{index=13}
+- Deployment (FastAPI / Flask) 
 
 ---
 
