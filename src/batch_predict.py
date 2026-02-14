@@ -51,7 +51,7 @@ def main():
 
     # Make prediction
     prediction = model.predict(df)
-    probability = model.predict_proba(input_data)[0][1]
+    probability = model.predict_proba(df)[0][1]
 
     print("\nPrediction Result:")
     print(f"Churn Probability: {probability:.4f}")
