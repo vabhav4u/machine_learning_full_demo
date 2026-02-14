@@ -28,9 +28,9 @@ def generate_data():
 
     df["churn"] = y
 
-    os.makedirs("../data/raw", exist_ok=True)
-    df.to_csv("../data/raw/customers.csv", index=False)
-    print("Raw data saved to ../data/raw/customers.csv")
+    os.makedirs("data/raw", exist_ok=True)
+    df.to_csv("data/raw/customers.csv", index=False)
+    print("Raw data saved to data/raw/customers.csv")
 
 if __name__ == "__main__":
     generate_data()

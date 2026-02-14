@@ -1,12 +1,12 @@
-name: CI - Validate ML Pipeline
+name: CD - Run Inference on Production Model
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
-  validate:
+  deploy-and-predict:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,22 +22,16 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run Data Pipeline
+      - name: Run Data + Train (if needed)
         run: |
           python src/data_ingestion.py
           python src/data_cleaning.py
           python src/feature_engineering.py
-
-      - name: Train Model
-        run: |
           python src/train.py
 
-      - name: Verify model exists
+      - name: Run Prediction from CSV
         run: |
-          if [ ! -f "models/model.pkl" ]; then
-            echo "MLflow artifacts missing"
-            exit 1
-          fi
+          python src/batch_predict.py
 
-      - name: CI Success
-        run: echo "CI validation passed 🚀"
+      - name: CD Completed
+        run: echo "CD Pipeline Completed 🚀"
