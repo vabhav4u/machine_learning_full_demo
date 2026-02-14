@@ -48,21 +48,14 @@ def main():
 
     df = df[expected_columns]
 
+
     # Make prediction
     prediction = model.predict(df)
-
-    df["prediction"] = prediction
+    probability = model.predict_proba(input_data)[0][1]
 
     print("\nPrediction Result:")
-    print(df[["prediction"]])
-
-    # Save output
-    os.makedirs("predict/output", exist_ok=True)
-    output_path = "predict/output/predictions.csv"
-    df.to_csv(output_path, index=False)
-
-    print(f"\nPredictions saved to {output_path}")
-
+    print(f"Churn Probability: {probability:.4f}")
+    print("Prediction:", "Likely to Churn" if prediction == 1 else "Not Likely")
 
 if __name__ == "__main__":
     main()
