@@ -21,6 +21,7 @@ def engineer_features():
     df.to_parquet("feature_store/features.parquet", index=False)
 
     print("Feature store saved to feature_store/features.parquet")
+    print(df.columns)
 
 if __name__ == "__main__":
     engineer_features()
