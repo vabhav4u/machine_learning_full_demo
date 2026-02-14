@@ -1,16 +1,16 @@
-name: ML Pipeline CI
+name: CI - Validate ML Pipeline
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
 jobs:
-  train-model:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup Python
@@ -18,9 +18,8 @@ jobs:
         with:
           python-version: 3.12
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Run Data Pipeline
@@ -32,3 +31,13 @@ jobs:
       - name: Train Model
         run: |
           python src/train.py
+
+      - name: Verify model exists
+        run: |
+          if [ ! -f "models/model.pkl" ]; then
+            echo "MLflow artifacts missing"
+            exit 1
+          fi
+
+      - name: CI Success
+        run: echo "CI validation passed 🚀"

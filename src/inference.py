@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 
 def predict(args):
-    model = joblib.load("../models/model.pkl")
+    model = joblib.load("models/model.pkl")
 
     input_data = pd.DataFrame([{
         "age": args.age,

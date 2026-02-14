@@ -3,7 +3,7 @@ import os
 from sklearn.preprocessing import StandardScaler
 
 def engineer_features():
-    df = pd.read_csv("../data/processed/cleaned.csv")
+    df = pd.read_csv("data/processed/cleaned.csv")
     print("Adding spend_per_tenure ...  ")    
     df["spend_per_tenure"] = df["monthly_spend"] / (df["tenure"] + 1)
 
@@ -17,10 +17,10 @@ def engineer_features():
     print("Scaling numeric values >0..<1")
     df[numeric_cols] = scaler.fit_transform(df[numeric_cols])
 
-    os.makedirs("../feature_store", exist_ok=True)
-    df.to_parquet("../feature_store/features.parquet", index=False)
+    os.makedirs("feature_store", exist_ok=True)
+    df.to_parquet("feature_store/features.parquet", index=False)
 
-    print("Feature store saved to ../feature_store/features.parquet")
+    print("Feature store saved to feature_store/features.parquet")
 
 if __name__ == "__main__":
     engineer_features()

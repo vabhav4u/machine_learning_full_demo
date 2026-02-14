@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 def train_model():
-    df = pd.read_parquet("../feature_store/features.parquet")
+    df = pd.read_parquet("feature_store/features.parquet")
 
     X = df.drop("churn", axis=1)
     y = df["churn"]
@@ -22,10 +22,10 @@ def train_model():
 
     y_pred = model.predict(X_test)
     acc = accuracy_score(y_test, y_pred)
-    os.makedirs("../models", exist_ok=True)
-    joblib.dump(model, "../models/model.pkl")
+    os.makedirs("models", exist_ok=True)
+    joblib.dump(model, "models/model.pkl")
 
-    with open("../models/metrics.json", "w") as f:
+    with open("models/metrics.json", "w") as f:
         json.dump({"accuracy": acc}, f)
 
     print(f"Model trained. Accuracy: {acc:.4f}")
